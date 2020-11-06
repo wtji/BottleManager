@@ -13,3 +13,5 @@ The objective of this project is to build a system using the small and cheap Ard
 * By 11/13 Design of alarm system, testing of Arduino
 * By 11/25 Design of interative app, training of AI (if any)
 * By 12/6 Validation testing, report and video making
+
+## Analysis of Prior Literature
