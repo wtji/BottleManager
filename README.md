@@ -22,7 +22,7 @@ Since our system consists of the Arduino part and the smartphone application par
   <img src="https://www.arduino.cc/en/uploads/Reference/ble-bulletin-board-model.png" width="500" align="center"/>
 </p>
 
-The BLE connection is like a bulletin board, where the peripheral device provides services and characteristics and the central devices act as clients of services. In our case, the Arduino board is the peripheral device which monitors the status of the medicine bottle and sends out service with a UUID that contains the status; the device installed with the monitor app is the central device which accesses the service using its UUID and reads the characteristics from or writes the characteristics to the Arduino board. 
+The BLE connection is like a bulletin board, where the peripheral device provides services and characteristics and the central devices act as clients of services (which is counter-intuitive in some sense). In our case, the Arduino board is the peripheral device which monitors the status of the medicine bottle and sends out service with a UUID that contains the status; the device installed with the monitor app is the central device which accesses the service using its UUID and reads the characteristics from or writes the characteristics to the Arduino board. 
 
 The Arduino BLE library is very powerful and integrated with the classes and methods for the service part. For use BLE in Arduino, we just need to include the library
 ```
