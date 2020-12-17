@@ -67,8 +67,9 @@ After initializing the manager and peripherals, there are mainly six steps to co
 5. Check if there exists a characteristic in the service matched by the given characteristic UUID
 6. If step 5 is verified, do the read and write operation on the characteristic
 
+
 ### Prior Related Projects
-We have searched for 
+
 
 
 
