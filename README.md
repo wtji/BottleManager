@@ -82,13 +82,13 @@ As discussed, the BLE connection is like a bulletin board, where the peripheral 
 Based on our technical approach we have the overall system architecture below. 
 
 <p align="center">
-<img src="https://github.com/wtji/BottleManager/blob/main/images/system_architecture.jpg" width="400"/>
+<img src="assets/system_architecture.jpg" width="400"/>
 </p>
 
 The system is divided into three parts. The first part is the medicine bottle attached with a small magnet, which will cause the magnetic switch to turn on when they come into contact with each other. The detection system based on arduino will receive the status of the magnetic switch, pack it into a bluetooth characteristic, and advertise through BLE. The app will listen to the advertisement and set up notifications based on the received status of the magnetic switch as well as communicate with the detection system through BLE write functions. You may notice that it is possible to connect multiple bottles to the detection system. This is achieved by connecting magnetics switches to different output pins of the arduino board, as seen below. There are a total of 11 output pins, so theoretically the system can monitor 11 bottles together, although in reality, no one is going to take 11 different medicines at the same time. Also, an led light is connected to the ground in parallel with each magnetic switch. They serve as indicators of status as well as resistor to prevent short circuit.
 
 <p align="center">
-<img src="https://github.com/wtji/BottleManager/blob/main/images/arduino_connection.JPG" width="400"/>
+<img src="assets/arduino_connection.JPG" width="400"/>
 </p>
 
 ### Basic Functions
@@ -98,7 +98,7 @@ In our design, there are four basic functions that the bottle manager provides.
 * **Adjust the alarm time**  As mentioned in previous point, the reminder system will automatically adjust the alarm based on the data from the central device based on the logic below. Therefore the reminders are more flexible and accurate rather than being fixed. 
 
 <p align="center">
-<img src="https://github.com/wtji/BottleManager/blob/main/images/alarm_logic.JPG" width="500"/>
+<img src="assets/alarm_logic.JPG" width="500"/>
 </p>
 
 * **Location helper**  Sometimes, users might forget the location of their medicine so we developed a function help locate the device. By tapping a button on the app, it will trigger the buzzer and LED connected to the board to assist users find the device. 
@@ -113,7 +113,7 @@ https://youtu.be/HzWRkifFVtQ
 Since we are using BLE, we are very aware of the energy consumption, so we did a rough battery life test. Instead of powering the detection system directly from the computer USB port, we used 4 AA cells of 1.5 V with capacity of 2400 mAh (milliAmpere-hour) to power the system and left it on for days to see how long the system would last. The system eventually lasted approximately 10 days. The table below shows the Arduino Nano 33 BLE Sense current drain in different usage situations.
 
 <p align="center">
-<img src="https://github.com/wtji/BottleManager/blob/main/images/energy_table.JPG" width="800"/>
+<img src="assets/energy_table.JPG" width="800"/>
 </p>
 
 According to the table, when the voltage supply is 6V, the current drain with BLE on is 37 mA, so the estimated battery life is 10.81 days, which is longer but very similar to our test result. This is reasonable since we only consider current drain from BLE usage. From the table, we can also see that if we were to use 6 AA cells, we would obtain the battery life of around 30 days since the current drain is only 20 mA. This is the longest battery life estimation, and therefore it is optimal to use 6 AA cells (or 9V equivalent cells) if we do not want to power it with a wall outlet or a USB port. 
