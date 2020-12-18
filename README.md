@@ -98,8 +98,23 @@ In our design, there are four basic functions that the bottle manager provides.
 * **Adjust the alarm time**  As mentioned in previous point, the reminder system will automatically adjust the alarm based on the data from the central device based on the logic below. Therefore the reminders are more flexible and accurate rather than being fixed. 
 
 <p align="center">
-<img src="https://github.com/wtji/BottleManager/blob/main/images/alarm_logic.JPG" width="400"/>
+<img src="https://github.com/wtji/BottleManager/blob/main/images/alarm_logic.JPG" width="500"/>
 </p>
 
 * **Location helper**  Sometimes, users might forget the location of their medicine so we developed a function help locate the device. By tapping a button on the app, it will trigger the buzzer and LED connected to the board to assist users find the device. 
+
+## Demo
+Link to the demo video: 
+https://youtu.be/-HIwt8tEfJs 
+https://youtu.be/HzWRkifFVtQ
+
+## Discussion
+### Energy Consumption
+Since we are using BLE, we are very aware of the energy consumption, so we did a rough battery life test. Instead of powering the detection system directly from the computer USB port, we used 4 AA cells of 1.5 V with capacity of 2400 mAh (milliAmpere-hour) to power the system and left it on for days to see how long the system would last. The system eventually lasted approximately 10 days. The table below shows the Arduino Nano 33 BLE Sense current drain in different usage situations.
+
+<p align="center">
+<img src="https://github.com/wtji/BottleManager/blob/main/images/energy_table.JPG" width="800"/>
+</p>
+
+According to the table, when the voltage supply is 6V, the current drain with BLE on is 37 mA, so the estimated battery life is 10.81 days, which is longer but very similar to our test result. This is reasonable since we only consider current drain from BLE usage. From the table, we can also see that if we were to use 6 AA cells, we would obtain the battery life of around 30 days since the current drain is only 20 mA. This is the longest battery life estimation, and therefore it is optimal to use 6 AA cells (or 9V equivalent cells) if we do not want to power it with a wall outlet or a USB port. 
 
