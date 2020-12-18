@@ -74,5 +74,6 @@ We have searched for other kinds of smart bottle projects. Two of them is worth 
 The second one is from https://ieeexplore.ieee.org/document/7945434. It is a conference paper, so we are unable to find the source code for this project. Like the first one, this is also a water consumption tracker. The detection of water consumption is achieved using smartwatch gesture detection, and the system displays the water consumption on an app device. Compared to the first project, this one has significantly more compatibility since it detects the water consumption using an external device, but the cost of such an external device is usually high. One common problem of these two projects is that it uses regular Bluetooth, so the energy consumption is high, and it cannot last long without constant power supply (for the second project it seems not a big problem). Also, the regular Bluetooth limits the number of devices connected. Nevertheless, it is a nice and interesting project, and its system architecture is very similar to ours. 
 
 
+## Design Process
 
 
