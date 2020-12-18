@@ -27,7 +27,7 @@ Since our system consists of the Arduino part and the smartphone application par
   <img src="https://www.arduino.cc/en/uploads/Reference/ble-bulletin-board-model.png" width="500" align="center"/>
 </p>
 
-The BLE connection is like a bulletin board, where the peripheral device provides services and characteristics and the central devices act as clients of services (which is counter-intuitive in some sense). In our case, the Arduino board is the peripheral device which monitors the status of the medicine bottle and sends out service with a UUID that contains the status; the device installed with the monitor app is the central device which accesses the service using its UUID and reads the characteristics from or writes the characteristics to the Arduino board. 
+The BLE connection is like a bulletin board, where the peripheral device provides services and characteristics and the central devices act as clients of services (which is counter-intuitive in some sense). 
 
 The Arduino BLE library is very powerful and integrated with the classes and methods for the service part. For use BLE in Arduino, we just need to include the library
 ```
@@ -75,5 +75,31 @@ The second one is from https://ieeexplore.ieee.org/document/7945434. It is a con
 
 
 ## Design Process
+### Technical Approach
+As discussed, the BLE connection is like a bulletin board, where the peripheral device provides services and characteristics and the central devices act as clients of services. In our case, the Arduino board is the peripheral device, and the device installed with the app is the central device. We use Arduino Nano 33 BLE Sense board to monitor the status of our system. Each bottle will have a connection to the board through a magnet switch. With GPIO monitoring, arduino will acknowledge through its digital pin reading, and record the related time and update the associated BLE characteristics once one of the magnetic switches got disconnect from the board. Also, arduino monitors certain characteristics on the BLE side. For example, the buzzer switch. Once the buzzer switch characteristic got written by the app, the arduino will turn on or turn off the buzzer based on the given value. The central device side is basically a reminder app. It runs on ios, and uses UILocalNotfications to the user. But the thing different than a regular reminder app is that its triggering criteria is not the time but whether the device has received an advertisement from the peripheral device saying the user has not taken the pill yet. To achieve this function, we are going to use the Core Bluetooth library in Swift so that our device can act as a CBCentral and start to listen to the advertisement. 
 
+### System Explained
+Based on our technical approach we have the overall system architecture below. 
+
+<p align="center">
+<img src="https://github.com/wtji/BottleManager/blob/main/images/system_architecture.JPG" width="400"/>
+</p>
+
+The system is divided into three parts. The first part is the medicine bottle attached with a small magnet, which will cause the magnetic switch to turn on when they come into contact with each other. The detection system based on arduino will receive the status of the magnetic switch, pack it into a bluetooth characteristic, and advertise through BLE. The app will listen to the advertisement and set up notifications based on the received status of the magnetic switch as well as communicate with the detection system through BLE write functions. You may notice that it is possible to connect multiple bottles to the detection system. This is achieved by connecting magnetics switches to different output pins of the arduino board, as seen below. There are a total of 11 output pins, so theoretically the system can monitor 11 bottles together, although in reality, no one is going to take 11 different medicines at the same time. Also, an led light is connected to the ground in parallel with each magnetic switch. They serve as indicators of status as well as resistor to prevent short circuit.
+
+<p align="center">
+<img src="https://github.com/wtji/BottleManager/blob/main/images/arduino_connection.JPG" width="400"/>
+</p>
+
+### Basic Functions
+In our design, there are four basic functions that the bottle manager provides. 
+* **Set up alarm**  Users can set up alarm for each individual medicine for desired time. With the set alarm, the system can remind the user based on contexts. In general, the system will first detect if there is a connection with the central device. 
+* **Alarm the user based on contexts**  If there exists a connection, the system will decide whether to remind the user based on the data from the peripheral device. If the data shows that the user has taken the medicine, the system will automatically adjust the alarm to the next cycle. When the system does not detect a connection with the central device, it will remind the user that he or she needs to go to the bottle manager to take the medicine.
+* **Adjust the alarm time**  As mentioned in previous point, the reminder system will automatically adjust the alarm based on the data from the central device based on the logic below. Therefore the reminders are more flexible and accurate rather than being fixed. 
+
+<p align="center">
+<img src="https://github.com/wtji/BottleManager/blob/main/images/alarm_logic.JPG" width="400"/>
+</p>
+
+* **Location helper**  Sometimes, users might forget the location of their medicine so we developed a function help locate the device. By tapping a button on the app, it will trigger the buzzer and LED connected to the board to assist users find the device. 
 
