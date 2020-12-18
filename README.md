@@ -145,5 +145,5 @@ We have proposed future improvements to solve the mentioned problems. Firstly, w
 * [Arduino-Powered Water Bottle](https://create.arduino.cc/projecthub/taifur/arduino-powered-water-bottle-42ee43)
 * S. Soubam, M. Agrawal and V. Naik, [Using an Arduino and a smartwatch to measure liquid consumed from any container](https://ieeexplore.ieee.org/document/7945434), 2017 9th International Conference on Communication Systems and Networks (COMSNETS), Bangalore, 2017, pp. 464-467, doi: 10.1109/COMSNETS.2017.7945434.
 * [Getting Started with Bluetooth LE on the Arduino Nano 33 Sense](https://ladvien.com/arduino-nano-33-bluetooth-low-energy-setup/)
-* [Simple reminders project](https://github.com/AfrazCodes/SimpleReminders)
+* [Simple Reminders Project](https://github.com/AfrazCodes/SimpleReminders)
 * [Arduino Nano 33 IoT Guide](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide)
