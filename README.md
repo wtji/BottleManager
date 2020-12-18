@@ -104,7 +104,6 @@ In our design, there are four basic functions that the bottle manager provides.
 * **Location helper**  Sometimes, users might forget the location of their medicine so we developed a function help locate the device. By tapping a button on the app, it will trigger the buzzer and LED connected to the board to assist users find the device. 
 
 ## Demo
-Link to the demo video: 
 * [Demo1](https://youtu.be/-HIwt8tEfJs) 
 * [Demo2](https://youtu.be/HzWRkifFVtQ)
 
