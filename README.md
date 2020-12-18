@@ -82,7 +82,7 @@ As discussed, the BLE connection is like a bulletin board, where the peripheral 
 Based on our technical approach we have the overall system architecture below. 
 
 <p align="center">
-<img src="assets/system_architecture.jpg" width="400"/>
+<img src="assets/system_architecture.JPG" width="400"/>
 </p>
 
 The system is divided into three parts. The first part is the medicine bottle attached with a small magnet, which will cause the magnetic switch to turn on when they come into contact with each other. The detection system based on arduino will receive the status of the magnetic switch, pack it into a bluetooth characteristic, and advertise through BLE. The app will listen to the advertisement and set up notifications based on the received status of the magnetic switch as well as communicate with the detection system through BLE write functions. You may notice that it is possible to connect multiple bottles to the detection system. This is achieved by connecting magnetics switches to different output pins of the arduino board, as seen below. There are a total of 11 output pins, so theoretically the system can monitor 11 bottles together, although in reality, no one is going to take 11 different medicines at the same time. Also, an led light is connected to the ground in parallel with each magnetic switch. They serve as indicators of status as well as resistor to prevent short circuit.
